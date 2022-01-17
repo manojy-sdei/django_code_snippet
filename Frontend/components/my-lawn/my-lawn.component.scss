@@ -1,0 +1,121 @@
+@import '../../../vars';
+.main-content-section{width:100%;float:left;padding:0px 0;text-align:left;position:relative}
+.page-heading{width:100%;float:left;margin-bottom:50px;text-align:center;
+  h1{font-family:'FuturaLTBold';position:relative;width:auto;display:inline-block;padding:0 20px;font-size:5rem;
+    span{display:inline-block;position:relative;z-index:2}
+    &:before{background:#64c98f;position:absolute;bottom:-2px;left:0;width:100%;height:30px;content:''}
+  }
+}
+.backBtn{background:transparent;border:1px solid #333;color:#333;font-size:1.25rem;position:relative;border-left:0;padding:0;cursor:pointer;transition:.5s;box-shadow:3px 3px 0px #bfbfbf}
+.backBtn:before{position:absolute;background:transparent;width:36px;height:34px;content:'';left:-18px;top:6px;border:1px solid #333;background:#f8f8f8;z-index:1;transform:rotate(45deg)}
+.backBtn span{position:relative;z-index:2;padding:10px 30px;display:inline-block;background:#f8f8f8;transition:.5s}
+.backBtn:hover, .backBtn:hover span{border-radius:0 5px 5px 0}
+.backBtn:focus{outline:none}
+.subtitle{font-size:1.8rem;color:#000;font-family:'FuturaLTHeavy'}
+.roundcircle{position:relative}
+.roundcircle span{display:inline-block;position:relative;z-index:2}
+.roundcircle:before{background:#3fbd75;position:absolute;top:-10px;left:-10px;width:50px;height:50px;content:'';border-radius:50%}
+.spaceingDiv{padding:35px 0;clear:both}
+#map{width:100%;height:300px}
+.pagelink{border:1px solid $newGreen;padding:7px 15px;color:$newGreen;font-size:1.2rem;display:inline-block;margin:0px 0;transition:.5s;
+    &:hover{border-radius:5px}
+  }
+ p{color:$newGreen;font-family:'FuturaLTHeavy';font-size:1.125rem;
+  &.addressText{color:#000}
+  &.boldtext{color:$newGreen;font-family:'FuturaLTBold';font-size:2.1875rem}
+  &.lighttext{font-size:.75rem;color:#808080;font-family:'FuturaLT'}
+  &.progressBarHeading{font-family:'FuturaLTHeavy';font-size:1.125rem;color:#045D56;margin:0}
+  &.text-desc{font-size:.75rem;text-transform:uppercase;color:#808080;font-family:'FuturaLT'}
+}
+.main-content-section ul{width:100%;float:left;
+  li{width:100%;float:left;
+    p{width:50%;float:left;margin:0}
+    p+p{margin-top:20px}
+  }
+}
+.growth-potential{position:relative;min-height:200px;margin-top:100px}
+.seclabel{width:100%;float:left;position:absolute;z-index:1;top:-80px}
+.seclabel p{background:rgba(62,188,116,.60);padding:5px;color:#fff;margin-bottom:3px;font-weight:400;display:block;width:170px;font-family:'FuturaLT';font-size:1.125rem;text-align:center}
+.seclabel p+p{background:$newGreen}
+.seclabel.templabel p{background:rgba(244,191,66,.60)}
+.seclabel.templabel p+p{background:#F4BF42}
+.seclabel.rainlabel p{background:rgba(76,182,242,.60)}
+.seclabel.rainlabel p+p{background:#4CB6F2}
+.triangle{position:relative}
+.soil-marker{position:absolute}
+.progressBarWrap/deep/ ngb-progressbar .progress{height:1.6rem;background:rgba(62,188,116,.80)}
+.progressBarWrap/deep/ ngb-progressbar .progress-bar.bg-success{background:$newGreen!important}
+.subcolwrap{padding:30px 0 10px;text-align:center}
+.progressBarWrap{padding:30px 0}
+.progressBarWrap h3{font-size:1.125rem;color:#2E9531;font-family:'FuturaLTHeavy';font-weight:600;margin:0}
+.progressBarWrap h3.lightclr{color:$newGreen;text-align:left}
+.progressBarWrap h3 span{font-size:1.25rem;color:#333;display:block;font-family:'FuturaLT';font-weight:400}
+.text-overlay{position:absolute;color:$white;top:0;margin-left:5px;font-size:14px;font-family:'AvenirLTStdHeavy'}
+.padT0{padding-top:0}
+.img-container img{max-width: 100%;}
+  @media screen and (min-width:1500px){
+    .pagelink{font-size:1.2rem}
+  }
+  
+  @media screen and (min-width:1900px){
+    .subtitle{font-size:2rem}
+    .roundcircle:before{top:-12px;left:-15px;width:60px;height:60px}
+    p.textto, p.addressText{font-size:1.2rem}
+    .pagelink{font-size:1.6rem}
+    p.lighttext{font-size:1rem}
+    p.text-desc{font-size:.85rem;margin:5px 0 0}
+    .seclabel p{font-size:1.4rem;padding:3px 5px;width:220px}
+    .progressBarWrap/deep/ ngb-progressbar .progress{height:2rem}
+    .subcolwrap{padding:0 0 10px}
+    .progressBarWrap .subcolwrap h3{font-size:1.4rem}
+    .progressBarWrap .subcolwrap span{font-size:1.4rem}
+    .text-overlay{font-size:1.2rem;top:3px}
+    p.progressBarHeading{font-size:1.2rem;margin:4px 0}
+  }
+  
+  @media screen and (min-width:2500px){
+    .pagelink{font-size:2rem}
+  }
+  
+  @media screen and (max-width:1170px){
+    .pagelink{padding:7px 10px;font-size:.9rem}
+    .progressBarWrap h3{font-size:1rem}
+    .subcolwrap{padding:0px 0 10px}
+  }
+
+  @media screen and (max-width:768px){
+    .main-content-section{margin:0}
+    .page-heading{margin:0}
+    .page-heading h1{font-size:4rem}
+    .spaceingDiv{padding:20px 0}
+    .subtitle{font-size:1.5rem}
+    p.boldtext{font-size:1.2rem}
+    .progressBarWrap{padding:0}   
+    .growth-potential{min-height:130px}
+    .main-content-section ul li p+p{margin-top:5px}
+  }
+  
+  @media screen and (max-width:767px){
+    #map{margin:20px 0}
+    .mobcenter{text-align:center}
+    .pagelink{font-size:1.2rem;margin:10px auto}
+    .triangle{margin-bottom:20px;text-align:center}
+  }
+
+  @media screen and (max-width:640px){
+  .page-heading h1{font-size:3rem}
+  .page-heading h1:before{height:20px}
+  }
+  
+  @media screen and (max-width:565px){
+   .pagelink{float:none}
+   .backBtn{margin-left:30px}
+  }
+  
+  @media screen and (max-width:480px){   
+    
+  }
+
+  @media screen and (max-width:375px){   
+    .pagelink{padding:.5rem;font-size:1rem}
+  }

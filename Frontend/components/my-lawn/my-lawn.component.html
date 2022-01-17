@@ -1,0 +1,547 @@
+<ngx-loading [show]="loading" [config]="{fullScreenBackdrop: true}"></ngx-loading>
+<app-register-header></app-register-header>
+<section class="wrapper" *ngIf="showContent">
+  <div class="main-content-section">
+    <div class="container">
+      <div class="spaceingDiv">
+        <button name="back" [routerLink]="['/your-lawn']" class="backBtn">
+          <span>Back to Summary</span>
+        </button>
+        <div class="row">
+          <div class="col">
+            <div class="page-heading wow fadeInDown">
+              <h1 class="text-black text-center text-lawn-heading heading-title">
+                <span>your lawn</span>
+              </h1>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="spaceingDiv">
+        <div class="row">
+          <div class="col-md-3 col-sm-12">
+            <h2 class="subtitle roundcircle">
+              <span>satellite</span>
+            </h2>
+          </div>
+          <div class="col-md-5 col-sm-12" *ngIf="!isImage">
+            <div class="map-option-wrap">
+              <div id="map"></div>
+            </div>
+          </div>
+  
+          <div class="col-md-5 col-sm-12" *ngIf="isImage">
+            <div class="map-option-wrap">
+              <div class="img-container"> <img src="{{imagePath}}"/></div>
+            </div>
+          </div>
+          <div class="col-md-4 col-sm-12 mobcenter">
+            <p class="addressText">{{areaName}}</p>
+            <p class="textto">{{lawnSize}} sqft Lawn Area
+              <span class="linebrk"> Shaded Area Under Review</span>
+            </p>
+            <!-- <a [routerLink]="['/lawn-area']" class="pagelink">select lawn on map</a> -->
+          </div>
+        </div>
+      </div>
+
+      <div class="spaceingDiv">
+        <div class="row">
+          <div class="col-sm-12">
+            <h2 class="subtitle">
+              <span>{{startDate}} - {{endDate}}</span>
+            </h2>
+          </div>
+          <div class="col-md-9 offset-md-3 col-sm-12">
+            <ul>
+              <li>
+                <p class="boldtext">{{coolerTempLabel}}</p>
+                <p class="lighttext">{{degreeLabel}}</p>
+              </li>
+              <li>
+                <p class="boldtext">{{weatherLabel}}</p>
+                <p class="lighttext">{{rainLabel}}</p>
+              </li>
+              <li>
+                <p class="boldtext">Low Heat Stress</p>
+                <p class="lighttext">0 HIGH HEAT STRESS DAYS</p>
+              </li>
+              <li>
+                <p class="boldtext">{{grossPotenLable}}</p>
+                <p class="lighttext">{{grossPotenPer}}</p>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <div class="spaceingDiv">
+        <div class="row">
+          <div class="col-md-3 col-sm-12">
+            <h2 class="subtitle">climate</h2>
+          </div>
+          <div class="col-md-9 col-sm-12">
+            <div class="col-12">
+              <div class="seclabel grasslabel">
+                <p>grass growth typical</p>
+                <p>grass growth {{currentYear}}</p>
+              </div>
+              <div class="growth-potential">
+                <app-grass-chart [chartData]="lineChartData" [chartLabels]="lineChartLabels" [chartColors]="lineChartColors"></app-grass-chart>
+                <app-grass-chart [chartData]="lineChart2Data" [chartLabels]="lineChartLabels" [chartColors]="lineChart2Colors"></app-grass-chart>
+              </div>
+            </div>
+
+            <div class="col-sm-12">
+              <div class="seclabel templabel">
+                <p>temp typical</p>
+                <p>temp {{currentYear}}</p>
+              </div>
+              <div class="growth-potential">
+                <app-temp-chart [chartData]="lineChartData" [chartLabels]="lineChartLabels" [chartColors]="lineChartColors"></app-temp-chart>
+                <app-temp-chart [chartData]="lineChart2Data" [chartLabels]="lineChartLabels" [chartColors]="lineChart2Colors"></app-temp-chart>
+              </div>
+            </div>
+
+            <div class="col-sm-12">
+              <div class="seclabel rainlabel">
+                <p>rain typical</p>
+                <p>rain {{currentYear}}</p>
+              </div>
+              <div class="growth-potential">
+                <app-rain-chart [chartData]="lineChartData" [chartLabels]="lineChartLabels" [chartColors]="lineChartColors"></app-rain-chart>
+                <app-rain-chart [chartData]="lineChart2Data" [chartLabels]="lineChartLabels" [chartColors]="lineChart2Colors"></app-rain-chart>
+              </div>
+            </div>
+
+            <div class="progressBarWrap" *ngIf="weatherInfo">
+              <div class="col-sm-12">
+                <div class="row">
+                  <div class="col-xl-7 col-lg-7 col-md-7 col-sm-12">
+                    <ngb-progressbar type="success" [value]="weatherInfo.total_season_days" max="365"></ngb-progressbar>
+                    <span class="text-overlay">{{ weatherInfo.total_season_days }} days</span>
+                  </div>
+                  <div class="col-xl-5 col-lg-5 col-md-5 col-sm-12">
+                    <p class="text-desc mb-1">Normal Lawn Season</p>
+                  </div>
+                </div>
+              </div>
+
+              <div class="col-sm-12">
+                <div class="row">
+                  <div class="col-xl-7 col-lg-7 col-md-7 col-sm-12">
+                    <ngb-progressbar type="success" [value]="weatherInfo.average_cloud_cover" max="50"></ngb-progressbar>
+                    <span class="text-overlay">{{ weatherInfo.average_cloud_cover }}%</span>
+                  </div>
+                  <div class="col-xl-5 col-lg-5 col-md-5 col-sm-12">
+                    <p class="text-desc mb-1">Minimal cloud cover</p>
+                  </div>
+                </div>
+              </div>
+
+              <div class="col-sm-12">
+                <div class="row">
+                  <div class="col-xl-7 col-lg-7 col-md-7 col-sm-12">
+                    <ngb-progressbar type="success" [value]="weatherInfo.average_precip" max="6"></ngb-progressbar>
+                    <span class="text-overlay">{{ weatherInfo.average_precip }} inches</span>
+                  </div>
+                  <div class="col-xl-5 col-lg-5 col-md-5 col-sm-12">
+                    <p class="text-desc mb-1">Low rainfall</p>
+                  </div>
+                </div>
+              </div>
+
+              <div class="col-sm-12">
+                <div class="row">
+                  <div class="col-xl-7 col-lg-7 col-md-7 col-sm-12">
+                    <ngb-progressbar type="success" [value]="weatherInfo.avg_temp" max="80"></ngb-progressbar>
+                    <span class="text-overlay">{{ weatherInfo.avg_temp }} deg f</span>
+                  </div>
+                  <div class="col-xl-5 col-lg-5 col-md-5 col-sm-12">
+                    <p class="text-desc mb-1">Warm summer</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="spaceingDiv">
+        <div class="row">
+          <div class="col-md-3 col-sm-12">
+            <h2 class="subtitle">soil profile</h2>
+          </div>
+          <div class="col-md-9 col-sm-12">
+            <div class="row">
+              <div class="col-lg-4 col-md-5 col-sm-5">
+                <div class="triangle">
+                  <img src="assets/images/soil-profile-img.png" class="img-fluid" />
+                  <img src="assets/images/new-marker.png" class="soil-marker" [ngStyle]="{'left.%': markerX, 'bottom.%': markerY }" />
+                </div>
+              </div>
+
+              <div class="col-lg-8 col-md-7  col-sm-7" *ngIf="data">
+                <div class="progressBarWrap">
+                  <div class="col-xl-7 col-lg-7 col-md-12 col-sm-12">
+                    <div class="subcolwrap">
+                      <h3>Soil Name: {{ data?.soil_composition?.soil_name }}</h3>
+                      <span>{{ data?.soil_composition?.sand | number:'1.0-0' }}% Sand {{ data?.soil_composition?.silt |
+                        number:'1.0-0'
+                        }}% Silt {{ data?.soil_composition?.clay | number:'1.0-0' }}% Clay
+                      </span>
+                    </div>
+                  </div>
+                  <div class="col-12">
+                    <div class="row">
+                      <div class="col-xl-7 col-lg-7 col-md-6 col-sm-12">
+                        <ngb-progressbar type="success" [value]="data?.soil_composition?.organic_matter" max="4"></ngb-progressbar>
+                        <span class="text-overlay">{{ data?.soil_composition?.organic_matter|number:'1.1-2' }}%</span>
+                      </div>
+                      <div class="col-xl-5 col-lg-5 col-md-6 col-sm-12">
+                        <p class="text-desc mb-1">Normal Organic Matter</p>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="col-12">
+                    <div class="row">
+                      <div class="col-xl-7 col-lg-7 col-md-6 col-sm-12">
+                        <ngb-progressbar class="my-progress-bar" aria-valuenow="7" aria-valuemin="5" aria-valuemax="9"
+                          type="success"></ngb-progressbar>
+                        <span class="text-overlay">{{ data?.soil_composition?.soil_ph|number:'1.1-1' }} PH</span>
+                      </div>
+                      <div class="col-xl-5 col-lg-5 col-md-6 col-sm-12">
+                        <p class="text-desc mb-1">Balanced Soil PH</p>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="col-12">
+                    <div class="row">
+                      <div class="col-xl-7 col-lg-7 col-md-6 col-sm-12">
+                        <ngb-progressbar type="success" [value]="data?.soil_composition?.cation_exchange_capacity" max="10"></ngb-progressbar>
+                        <span class="text-overlay">{{ data?.soil_composition?.cation_exchange_capacity|number:'1.1-2'
+                          }} me/100g</span>
+
+                      </div>
+                      <div class="col-xl-5 col-lg-5 col-md-6 col-sm-12">
+                        <p class="text-desc mb-1">Normal Cation Exchange</p>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="col-12">
+                    <div class="row">
+                      <div class="col-xl-7 col-lg-7 col-md-6 col-sm-12">
+                        <ngb-progressbar type="success" [value]="data?.soil_composition?.water_capacity" max="0.25"></ngb-progressbar>
+                        <span class="text-overlay">{{ data?.soil_composition?.water_capacity|number:'1.1-2' }} cm/cm</span>
+                      </div>
+                      <div class="col-xl-5 col-lg-5 col-md-6 col-sm-12">
+                        <p class="text-desc mb-1">Low Water Capacity</p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="spaceingDiv">
+        <div class="row">
+          <div class="col-md-3 col-sm-12">
+            <h2 class="subtitle">soil test</h2>
+          </div>
+          <div class="col-md-9 col-sm-12">
+            <div class="row">
+              <div class="col-md-6 col-sm-12">
+                <div class="progressBarWrap">
+                  <div class="col-xl-7 col-lg-7 col-sm-12">
+                    <div class="subcolwrap padT0">
+                      <h3 class="lightclr">{{dateTested}}</h3>
+                    </div>
+                  </div>
+
+                  <div class="col-12">
+                    <div class="row">
+                      <div class="col-12">
+                        <p class="progressBarHeading">Nutrient Availability </p>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-12">
+                    <div class="row">
+                      <div class="col-xl-6 col-lg-12">
+                        <ngb-progressbar type="success" [value]="soilProfileData.pH" min="5" max="9"></ngb-progressbar>
+                        <span class="text-overlay" *ngIf="isSoilProfileData">
+                          {{ soilProfileData.pH|number:'1.1-1' }}
+                        </span>
+                        <span class="text-overlay" *ngIf="!isSoilProfileData">
+                          N/A
+                        </span>
+                      </div>
+                      <div class="col-xl-6 col-lg-12">
+                        <p class="text-desc mb-1">{{soilPHLabel}} PH</p>
+                      </div>
+                    </div>
+                  </div>
+
+
+                  <div class="col-12">
+                    <div class="row">
+                      <div class="col-xl-6 col-lg-12">
+                        <ngb-progressbar type="success" [value]="soilProfileData.CEC" min="0" max="25"></ngb-progressbar>
+                        <span class="text-overlay" *ngIf="isSoilProfileData">
+                          {{ soilProfileData.CEC|number:'1.1-2' }}
+                          cm/cm</span>
+                        <span class="text-overlay" *ngIf="!isSoilProfileData">
+                          N/A
+                        </span>
+                      </div>
+                      <div class="col-xl-6 col-lg-12">
+                        <p class="text-desc mb-1">{{CECLabel}} Cation Exchange</p>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="col-12">
+                    <div class="row">
+                      <div class="col-xl-6 col-lg-12">
+                        <ngb-progressbar type="success" [value]="1" min="0" max="7"></ngb-progressbar>
+                        <span class="text-overlay" *ngIf="isSoilProfileData">{{ soilProfileData.OM|number:'1.1-2' }}%</span>
+                        <span class="text-overlay" *ngIf="!isSoilProfileData">
+                          N/A
+                        </span>
+                      </div>
+                      <div class="col-xl-6 col-lg-12">
+                        <p class="text-desc mb-1">{{organicMatterLabel}} Organic Matter</p>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="col-12">
+                    <div class="row">
+                      <div class="col-12">
+                        <p class="progressBarHeading">Macronutrients </p>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="col-12">
+                    <div class="row">
+                      <div class="col-xl-6 col-lg-12">
+                        <ngb-progressbar type="success" [value]="soilProfileData.Phosphorus" min="0" max="60"></ngb-progressbar>
+                        <span class="text-overlay" *ngIf="isSoilProfileData">{{ soilProfileData.Phosphorus |
+                          number:'1.0-0' }} ppm</span>
+                        <span class="text-overlay" *ngIf="!isSoilProfileData">
+                          N/A
+                        </span>
+                      </div>
+                      <div class="col-xl-6 col-lg-12">
+                        <p class="text-desc mb-1">{{phosphorusLabel}} Phosphorus</p>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="col-12">
+                    <div class="row">
+                      <div class="col-xl-6 col-lg-12">
+                        <ngb-progressbar type="success" [value]="soilProfileData.Potassium" min="0" max="200"></ngb-progressbar>
+                        <span class="text-overlay" *ngIf="isSoilProfileData">{{ soilProfileData.Potassium |
+                          number:'1.0-0' }} ppm</span>
+                        <span class="text-overlay" *ngIf="!isSoilProfileData">
+                          N/A
+                        </span>
+                      </div>
+                      <div class="col-xl-6 col-lg-12">
+                        <p class="text-desc mb-1">{{potassiumLabel}} Potassium</p>
+                      </div>
+                    </div>
+                  </div>
+
+                </div>
+              </div>
+
+              <div class="col-md-6 col-sm-12">
+                <div class="progressBarWrap">
+                  <div class="col-12">
+                    <div class="row">
+                      <div class="col-12">
+                        <p class="progressBarHeading">Micronutrients </p>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-12">
+                    <div class="row">
+                      <div class="col-xl-6 col-lg-12">
+                        <ngb-progressbar type="success" [value]="soilProfileData.Magnesium" min="0" max="100"></ngb-progressbar>
+                        <span class="text-overlay" *ngIf="isSoilProfileData">{{ soilProfileData.Magnesium |
+                          number:'1.0-0' }} ppm</span>
+                        <span class="text-overlay" *ngIf="!isSoilProfileData">
+                          N/A
+                        </span>
+                      </div>
+                      <div class="col-xl-6 col-lg-12">
+                        <p class="text-desc mb-1">{{magnesiumLabel}} Magnesium</p>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="col-12">
+                    <div class="row">
+                      <div class="col-xl-6 col-lg-12">
+                        <ngb-progressbar type="success" [value]="soilProfileData.Calcium" min="0" max="700"></ngb-progressbar>
+                        <span class="text-overlay" *ngIf="isSoilProfileData">{{ soilProfileData.Calcium |
+                          number:'1.0-0' }} ppm</span>
+                        <span class="text-overlay" *ngIf="!isSoilProfileData">
+                          N/A
+                        </span>
+                      </div>
+                      <div class="col-xl-6 col-lg-12">
+                        <p class="text-desc mb-1">{{calciumLabel}} Calcium</p>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="col-12">
+                    <div class="row">
+                      <div class="col-xl-6 col-lg-12">
+                        <ngb-progressbar type="success" [value]="soilProfileData.Sodium" min="0" max="160"></ngb-progressbar>
+                        <span class="text-overlay" *ngIf="isSoilProfileData">{{ soilProfileData.Sodium | number:'1.0-0'
+                          }} ppm</span>
+                        <span class="text-overlay" *ngIf="!isSoilProfileData">
+                          N/A
+                        </span>
+                      </div>
+                      <div class="col-xl-6 col-lg-12">
+                        <p class="text-desc mb-1">{{sodiumLabel}} Sodium</p>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="col-12">
+                    <div class="row">
+                      <div class="col-xl-6 col-lg-12">
+                        <ngb-progressbar type="success" [value]="soilProfileData.Sulfur" min="0" max="17"></ngb-progressbar>
+                        <span class="text-overlay" *ngIf="isSoilProfileData">{{ soilProfileData.Sulfur | number:'1.0-0'
+                          }} ppm</span>
+                        <span class="text-overlay" *ngIf="!isSoilProfileData">
+                          N/A
+                        </span>
+                      </div>
+                      <div class="col-xl-6 col-lg-12">
+                        <p class="text-desc mb-1">{{sulfurLabel}} Sulfer</p>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="col-12">
+                    <div class="row">
+                      <div class="col-xl-6 col-lg-12">
+                        <ngb-progressbar type="success" [value]="soilProfileData.Zinc" min="0" max="10"></ngb-progressbar>
+                        <span class="text-overlay" *ngIf="isSoilProfileData">{{ soilProfileData.Zinc | number:'1.0-0'
+                          }} ppm</span>
+                        <span class="text-overlay" *ngIf="!isSoilProfileData">
+                          N/A
+                        </span>
+                      </div>
+                      <div class="col-xl-6 col-lg-12">
+                        <p class="text-desc mb-1">{{zincLabel}} Zinc</p>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="col-12">
+                    <div class="row">
+                      <div class="col-xl-6 col-lg-12">
+                        <ngb-progressbar type="success" [value]="soilProfileData.Manganese" min="0" max="49"></ngb-progressbar>
+                        <span class="text-overlay" *ngIf="isSoilProfileData">{{ soilProfileData.Manganese |
+                          number:'1.0-0' }} ppm</span>
+                        <span class="text-overlay" *ngIf="!isSoilProfileData">
+                          N/A
+                        </span>
+                      </div>
+                      <div class="col-xl-6 col-lg-12">
+                        <p class="text-desc mb-1">{{manganeseLabel}} Manganese</p>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="col-12">
+                    <div class="row">
+                      <div class="col-xl-6 col-lg-12">
+                        <ngb-progressbar type="success" [value]="soilProfileData.Iron" min="0" max="200"></ngb-progressbar>
+                        <span class="text-overlay" *ngIf="isSoilProfileData">{{ soilProfileData.Iron | number:'1.0-0'
+                          }} ppm</span>
+                        <span class="text-overlay" *ngIf="!isSoilProfileData">
+                          N/A
+                        </span>
+                      </div>
+                      <div class="col-xl-6 col-lg-12">
+                        <p class="text-desc mb-1">{{ironLabel}} Iron</p>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="col-12">
+                    <div class="row">
+                      <div class="col-xl-6 col-lg-12">
+                        <ngb-progressbar type="success" [value]="soilProfileData.Copper" min="0" max="3"></ngb-progressbar>
+                        <span class="text-overlay" *ngIf="isSoilProfileData">{{ soilProfileData.Copper | number:'1.0-0'
+                          }} ppm</span>
+                        <span class="text-overlay" *ngIf="!isSoilProfileData">
+                          N/A
+                        </span>
+                      </div>
+                      <div class="col-xl-6 col-lg-12">
+                        <p class="text-desc mb-1">{{copperLabel}} Copper</p>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="col-12">
+                    <div class="row">
+                      <div class="col-xl-6 col-lg-12">
+                        <ngb-progressbar type="success" [value]="soilProfileData.Boron" min="0" max="2.5"></ngb-progressbar>
+                        <span class="text-overlay" *ngIf="isSoilProfileData">{{ soilProfileData.Boron | number:'1.0-0'
+                          }} ppm</span>
+                        <span class="text-overlay" *ngIf="!isSoilProfileData">
+                          N/A
+                        </span>
+                      </div>
+                      <div class="col-xl-6 col-lg-12">
+                        <p class="text-desc mb-1">{{boronLabel}} Boron</p>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-12">
+                    <div class="row">
+                      <div class="col-xl-6 col-lg-12">
+                        <ngb-progressbar type="success" [value]="soilProfileData.Sol_Salts" min="0" max="2 "></ngb-progressbar>
+                        <span class="text-overlay" *ngIf="isSoilProfileData">{{ soilProfileData.Sol_Salts |
+                          number:'1.0-0' }} ppm</span>
+                        <span class="text-overlay" *ngIf="!isSoilProfileData">
+                          N/A
+                        </span>
+                      </div>
+                      <div class="col-xl-6 col-lg-12">
+                        <p class="text-desc mb-1">{{SolSaltsLabel}} Soluble Salts</p>
+                      </div>
+                    </div>
+                  </div>
+
+
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<app-new-footer></app-new-footer>

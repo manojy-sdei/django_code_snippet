@@ -1,0 +1,56 @@
+version: '2'
+services:
+
+  rabbit: 
+    hostname: rabbit
+    image: rabbitmq:latest
+    ports:
+      - "5673:5672"
+      - "15672:15672"
+    expose:
+     - "15672"
+
+  nginx:
+    image: nginx:latest
+    container_name: ng01
+    ports:
+      - "8000:8000"
+    volumes:
+      - ./config/nginx:/etc/nginx/conf.d
+    depends_on:
+      - web  
+
+  web:
+    build: .
+    container_name: dg01
+    command: bash -c "yes | python manage.py makemigrations --merge  && python manage.py migrate --database=prod  && python manage.py runserver 0.0.0.0:8000 --settings=prairie_lawn_care.settings.prod"
+    depends_on:
+      - db
+    volumes:
+      - ./src:/src
+      - ../assets:/assets
+    expose:
+      - "8000"
+  db:
+    image: postgres:latest
+    container_name: ps01
+
+  celery:
+    build: .
+    command: celery -A prairie_lawn_care worker -l info
+    volumes:
+      - ./src:/src
+      - ../assets:/assets
+    depends_on:
+      - rabbit
+      - db
+      - web
+  celery-beat:
+    build: .
+    command: celery -A prairie_lawn_care beat -l info --scheduler django_celery_beat.schedulers:DatabaseScheduler
+    volumes:
+      - ./src:/src
+      - ../assets:/assets
+    depends_on:
+      - rabbit
+      - db

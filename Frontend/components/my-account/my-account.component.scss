@@ -1,0 +1,282 @@
+@import '../../../vars';
+.main-content-section{width:100%;float:left;padding:70px 0;text-align:left;position:relative}
+.page-heading{width:100%;float:left;margin-bottom:00px;text-align:center;
+    h1{font-family:'FuturaLTBold';position:relative;width:auto;display:inline-block;padding:0 20px;font-size:5rem;
+      span{display:inline-block;position:relative;z-index:2}
+      &:before{background:#64c98f;position:absolute;bottom:-2px;left:0;width:100%;height:30px;content:''}
+    }
+    p.subtitle{color:#000;font-size:2rem}
+  }
+.lawn-report-section, .user-porfile-section, .security-section, .plan-section{width:100%;float:left}
+
+.lawn-box{padding:10px 15px;background-color:$newGreen;color:$white;text-align:center;font-size:1.125rem;font-family:'FuturaLT';
+    margin:20px auto;max-width:70%;
+      p{margin:0;text-align:center;font-size:1.125rem;font-family: 'FuturaLT';color:#fff}
+    }
+    .fs-2{font-size:2rem}
+    .fs-15{font-size:1.5rem;margin:0}
+    hr.divider{width:50%;margin:10px auto;border-color:$lighterGrey}
+
+.infodata-half-block{padding:30px 5%;width:50%;float:left;text-align:left}
+.report-block{width:100%;float:left;padding:10px 0}
+.contentData h4{font-family:'AvenirBlack', sans-serif;font-size:1.8em;color:#1a1a1a}
+// .contentData p, .contentData span{font-family:'AvenirBook', sans-serif;font-weight:normal;font-size:.7rem;color:#4d4d4d;margin-top:0.25rem}
+.contentData h3{-webkit-margin-before:0em;-webkit-margin-after:0em;-webkit-margin-start:0px;-webkit-margin-end:0px}
+
+.lawnPlanData{width:100%;float:left;text-align:center;margin:30px auto 0;
+    p{color:#333;position:relative;margin:0px 0 20px;font-size:1.8rem;font-weight:400;display:block;
+        &.checked{color:#3ebc74;
+            i{font-size:2.6rem;vertical-align:middle}
+        }
+        &.closed{color:#333;
+            i{font-size:2.6rem;vertical-align:middle;color:#f26226}
+            span{color:#777;cursor:pointer}
+        }
+    &.marB0{margin-bottom:0}
+    }
+}
+
+.innerlinks{width:100%;float:left;text-align:center;margin:100px auto 30px auto;
+    p{padding-bottom:0;margin:0;
+        strong{color:#333;position:relative;margin:0px 0 20px;font-size:1.8rem;font-weight:600;display:block}
+        span{color:#000;position:relative;padding:0 10px;font-size:1.8rem;cursor:pointer;
+            &:first-child:after{display:none}
+            &:after{position:absolute;font-size:50px;content:'.';left:-10px;top:0;display:inline-block;line-height:10px;
+            }
+            a{color:#000}
+        }
+    }
+}
+.img-container{text-align:center}
+.progressBar.full-width{width:100%}
+.text-desc{font-size:.7rem}
+.page-btn-link{background:#f26226;color:#fff;border:0;text-align:center;margin:10px auto 0;padding:10px 50px;box-shadow:none;font-family:'AvenirBlack';cursor:pointer;display:inline-block;width:auto;
+    &:hover{background:#42c85c}
+}
+.defaultPageLink{border:1px solid #333;padding:10px 50px;color:#333;font-size:1rem;display:inline-block;margin:20px 0;transition:.5s;
+    &:hover{border-radius:3px}
+  }
+.green-text{color: $darkerGreen}
+.seperator{width:100%;height:1px;margin:4px 0 20px}
+.bar-info{width:65%;float:left;position:relative;padding:0;
+    ul{width:100%;float:left;position:relative;padding:0;
+        li{width:100%;float:left;position:relative;padding:0}
+    }
+}
+.progressBar{width:60%;float:left;padding:0 15px}
+.progress{height:1.4rem!important}
+.text-overlay{position:absolute;color:$white;top:0px;margin:0 0 0 5px;font-size:12px;font-family:'AvenirLTStdHeavy'}
+.progressTitle{width:40%;float:left}
+.pagelink{border:1px solid #f26226;padding:10px 50px;color:#fff;font-size:1.6rem;display:inline-block;margin:0px 0;background:#f26226}
+.newPageLink{border:1px solid #333;padding:10px 25px;color:#333;font-size:1.2rem;display:inline-block;margin:20px 0;transition:.5s;
+    &:hover{border-radius:3px}
+    span{display:block}
+  }
+.growth-potential{position:relative;margin-bottom:20px;
+    p.center_text{position:absolute;top:70%;left:50%;transform:translate(-50%, -50%);font-size:1em;color:#fff;margin:0;font-family:'AvenirLTStdHeavy'}
+  }
+
+.progress{position:relative}
+
+.soil-marker{position:absolute;height:20px}
+.soil-head{font-weight:bold;color:$textcolor;font-size:1rem;margin-bottom:0}
+.soil-head + p{font-family:'AvenirLTStdHeavy';font-weight:bold;margin-bottom:.7rem}
+.triangle{width:100%;position:relative;float:right}
+.text-note{font-size:.65em;text-align:left}
+
+.contact-form{padding:40px 0px;text-align:left;width:100%;float:left;
+    .form-group{width:100%;float:left;position:relative;margin-bottom:20px;
+        label{color:#000;font-size:1rem;margin:0;width:100%;font-family:'AvenirLTStdheavy';text-transform:uppercase}
+        input, textarea{color:#000;font-size:1.2rem;border:1px solid #c3c3c3;padding:10px 10px;height:auto;background:#fff;width:100%;line-height:24px;transition:all .5s;box-shadow:none;font-family:'AvenirLTStdBook';
+            &:focus{outline:none;box-shadow:none}
+        }
+        textarea{height:120px}
+        .submit-btn{background:#f26226;color:#fff;border:0;text-align:center;margin:10px auto 0;padding:10px 50px;box-shadow:none;font-family:'AvenirBlack';cursor:pointer;display:inline-block;width:auto;
+            &:hover{background:#42c85c}
+        }
+    }
+}
+.img-container img{max-width: 100%;}
+.error-notification{position:absolute;color:#d80000;bottom:-20px;right:5px;font-family:'AvenirLTStdBook';opacity:.8;font-size:.8rem}
+.info-text{width:100%;float:left;
+    p{padding-bottom:0px;font-family:'AvenirLTStdBlack';color:#000;position:relative;font-size:1.4rem;margin:0;
+        strong{font-weight:600}
+        span{ display:inline-block;padding:0 10px;font-size:1.4rem;color:#000}
+        }
+    }
+
+    .subtitle{font-size:1.8rem;color:#000;font-family:'FuturaLTHeavy'}
+    .roundcircle{position:relative}
+    .roundcircle span{display:inline-block;position:relative;z-index:2}
+    .roundcircle:before{background:#3fbd75;position:absolute;top:-10px;left:-10px;width:50px;height:50px;content:'';border-radius:50%}
+    .spaceingDiv{padding:35px 0;clear:both}
+    #map{width:100%;height:300px}
+      .contentData p{color:$newGreen;font-family:'FuturaLTHeavy';font-size:1.125rem;
+      &.addressText{color:#000}
+      &.boldtext{color:$newGreen;font-family:'FuturaLTBold';font-size:2.1875rem}
+      &.lighttext{font-size:.75rem;color:#808080;font-family:'FuturaLT'}
+      &.progressBarHeading{font-family:'FuturaLTHeavy';font-size:1.125rem;color:#045D56;margin:0}
+      &.text-desc{font-size:.75rem;text-transform:uppercase;color:#808080;font-family:'FuturaLT'}
+    }
+    .main-content-section ul{width:100%;float:left;
+      li{width:100%;float:left;
+        p{width:50%;float:left;margin:0}
+        p+p{margin-top:20px}
+      }
+    }
+
+    .growth-potential{position:relative;min-height:200px;margin-top:100px}
+    .seclabel{width:100%;float:left;position:absolute;z-index:1;top:-80px}
+    .seclabel p{background:rgba(62,188,116,.60);padding:5px;color:#fff;margin-bottom:3px;font-weight:400;display:block;width:170px;font-family:'FuturaLT';font-size:1.125rem;text-align:center}
+    .seclabel p+p{background:$newGreen}
+    .seclabel.templabel p{background:rgba(244,191,66,.60)}
+    .seclabel.templabel p+p{background:#F4BF42}
+    .seclabel.rainlabel p{background:rgba(76,182,242,.60)}
+    .seclabel.rainlabel p+p{background:#4CB6F2}
+    .triangle{position:relative}
+    .soil-marker{position:absolute}
+    .progressBarWrap/deep/ ngb-progressbar .progress{height:1.6rem;background:rgba(62,188,116,.80)}
+    .progressBarWrap/deep/ ngb-progressbar .progress-bar.bg-success{background:$newGreen!important}
+    .subcolwrap{padding:30px 0 10px;text-align:center}
+    .progressBarWrap{padding:30px 0}
+    .progressBarWrap h3{font-size:1.125rem;color:#2E9531;font-family:'FuturaLTHeavy';font-weight:600;margin:0}
+    .progressBarWrap h3.lightclr{color:$newGreen;text-align:left}
+    .progressBarWrap h3 span{font-size:1.25rem;color:#333;display:block;font-family:'FuturaLT';font-weight:400}
+    .text-overlay{position:absolute;color:$white;top:0;margin-left:5px;font-size:14px;font-family:'AvenirLTStdHeavy'}
+    .padT0{padding-top:0}
+    .marB0{margin-bottom:0}
+
+@media screen and (min-width:1500px){
+  .text-overlay{top:2px;font-size:.8rem}
+  .text-desc{font-size:.8rem}
+  .triangle{margin:auto}
+  .btn-lg{font-size:1.2rem;margin-top:10px}
+  .pagelink{font-size:1.2rem}
+}
+
+@media screen and (min-width:1700px){
+ .screen-height{padding-top:20px}
+  h4{font-size:1.4rem}
+  .text-overlay{font-size:1rem}
+  .progress{height:1.6rem!important}
+  .soil-head{font-size:1.4rem}
+  .soil-marker{height:28px}
+  .text-note{font-size:.8rem}
+  .btn-lg{margin-top:12px!important}
+}
+
+@media screen and (min-width:1900px){
+  h4{font-size:1.8rem}
+  .text-overlay{top:0px;font-size:1.2rem}
+  .progress{height:2rem!important}
+  .text-desc{font-size:1rem}
+  .pagelink, .soil-head{font-size:1.6rem}
+  .growth-potential p.center_text{font-size:1.4rem}
+  .soil-marker{height:28px}
+  .text-note{font-size:1rem}
+  .btn-lg{font-size:1.4rem;margin-top:20px!important}
+}
+
+@media screen and (min-width:2500px){
+  .wrapper{height:calc(100vh - 6vh)}
+  h4{font-size:2.4rem}
+  .progress{height:2.8rem!important}
+  .text-overlay{top:5px;font-size:1.4rem}
+  .text-desc{font-size:1.4rem}
+  .pagelink, .soil-head{font-size:1.8rem}
+  .growth-potential p.center_text{font-size:2rem;top:80%}
+  .soil-marker{height:36px}
+  .btn-lg{font-size:2.2rem}
+  .text-note{font-size:1.3rem}
+}
+
+@media screen and (max-width:1280px){
+    .text-desc{font-size:.65rem}
+    .soil-head + p{font-size:.6rem}
+}
+
+@media screen and (max-width:1170px){
+    .infodata-half-block{width:60%}
+    .growth-potential p.center_text{top:66%}
+}
+
+@media screen and (max-width:1024px){
+    .growth-potential p.center_text{top:62%}
+}
+
+@media screen and (max-width:991px){
+    .infodata-half-block{width:100%}
+    .growth-potential p.center_text{top:64%;font-size:.9rem}
+    .bar-info{width:55%}
+    .contentData p.boldtext{font-size:1.125rem}
+    .main-content-section ul li p + p{margin:0}
+    .contentData p.lighttext{font-size:.87rem}
+    .triangle{width:100%;float:left}
+    .progressBarWrap{padding:0}
+    .subcolwrap{padding:0 0 10px}
+}
+
+@media screen and (max-width:768px){
+    .growth-potential p.center_text{top:58%}
+}
+
+@media screen and (max-width:767px){
+    .main-content-section{padding:50px 0}
+    .page-heading h1{font-size:3rem}
+    .page-heading h1:before{height:20px}
+    .innerlinks p span{font-size:1.6rem}
+    .innerlinks p span:after{font-size:40px}
+    .spaceingDiv{padding:15px 0}
+    h4{font-size:1.5rem}
+    .pagelink{font-size:1.2rem}
+    .progressBar.full-width{width:100%}
+    .growth-potential p.center_text{font-size:1rem;top:76%}
+    .triangle{margin:0 auto}
+    .text-note{font-size:.8rem}
+    .contact-form .form-group label{font-size:1rem}
+}
+
+@media screen and (max-width:585px){
+    .page-heading p.subtitle{font-size:1.5rem}
+    .innerlinks{margin:30px auto}
+    .innerlinks p span{font-size:1.4rem}
+    .bar-info{width:70%}
+    .pagelink{font-size:1rem}
+    .triangle{margin-bottom:20px;text-align:center}
+}
+
+
+@media screen and (max-width:565px){
+    .text-desc{display:block}
+    .growth-potential p.center_text{top:70%;font-size:.8rem}
+}
+
+@media screen and (max-width:480px){
+    .innerlinks p span{font-size:1.2rem}
+    .innerlinks p span::after{font-size:40px;left:-7px;line-height:3px}
+    .growth-potential p.center_text{top:60%}
+    .bar-info{width:100%}
+    .pagelink{margin:10px 15px 0}
+    .triangle{float:none;width:100%;max-width:240px}
+}
+
+@media screen and (max-width:375px){   
+    .page-heading p.subtitle{font-size:1.2rem}
+    .innerlinks p span{font-size:1rem}
+    .innerlinks p span::after{font-size:28px;left:-5px;line-height:5px}
+    h4{font-size:1.2rem}
+    .full-screen-width{width:100%}
+    .text-desc{font-size:.8rem;line-height:1rem}
+    .pagelink{padding:.5rem;font-size:1rem}
+    .growth-potential::before{height:calc(100% - 20px);left:6px}
+    .growth-potential p.center_text{font-size:.8rem;top:44%}
+    .text-note{font-size:.7rem}
+    .triangle{max-width:180px}
+    .info-text p strong, .info-text p span{font-size:1rem}
+}
+
+@media screen and (max-width:359px){
+    .innerlinks p span{font-size:.8rem}
+    .innerlinks p span::after{font-size:20px;line-height:4px}
+    .page-heading p.subtitle{font-size:1rem}
+}

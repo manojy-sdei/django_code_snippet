@@ -1,0 +1,35 @@
+.log-reg-section{height:100vh}
+.formsection{width:100%;float:left;height:100%;background:#f7f7f7;text-align:center}
+.formsection h2.subtitle{color:#333;font-size:1.8rem}
+.centerblock{width:100%;top:50%;position:relative;transform:translateY(-50%);max-width:500px;margin:auto}
+.centerblock .formsec{max-width:250px;margin:auto;padding-top:20px;text-align:left}
+.centerblock .formsec label{color:#333;font-size:1.2rem;width:100%;float:left;font-weight:bold;font-family:'AvenirLTStdBlack'}
+.centerblock .formsec input{border:0;box-shadow:2px 2px 0px #d7d7d7;background:#fff;outline:none;padding:10px 10px;font-size:1.2rem;width:100%;margin-bottom:10px}
+.centerblock .formsec input.submit-btn{background:#f26226;color:#fff;border:0;text-align:center;margin:10px 0;padding:10px 10px;box-shadow:none;font-family:'AvenirBlack';cursor:pointer;display:inline-block}
+.centerblock .formsec input.submit-btn:hover{background:#42c85c}
+.centerblock p{font-family:'AvenirLTStdBook';text-align:center;width:100%;float:left;margin:0;font-size:.8rem}
+.centerblock p a{color:#2f9632;transition:all .5s}
+.centerblock p a:hover{text-decoration:underline;color:#f26226}
+.error-msg{position:relative;left:0;transform:none;width:100%;float:left;text-align:center}
+.routelink{cursor:pointer}
+
+@media screen and (min-width:1920px){
+    .centerblock .formsec{max-width:300px}
+}
+
+@media screen and (max-width:1280px){
+    .formsection h2.subtitle{font-size:1.6rem} 
+}
+
+@media screen and (max-width:1170px){
+    .formsection h2.subtitle{font-size:1.5rem} 
+}
+
+@media screen and (max-width:767px){
+    .formsection h2.subtitle{font-size:1.4rem} 
+}
+
+@media screen and (max-width:585px){
+    .centerblock{top:auto;transform:none;padding:50px 0} 
+    .formsection h2.subtitle{font-size:1.2rem}
+}

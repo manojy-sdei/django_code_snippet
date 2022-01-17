@@ -1,0 +1,83 @@
+<ngx-loading [show]="loading" [config]="{fullScreenBackdrop: true}"></ngx-loading>
+<app-new-header></app-new-header>
+<section class="log-reg-section">
+	<p-growl [(value)]="msgs"></p-growl>
+	<div class="formsection" *ngIf="emailShowContent">
+		<div class="centerblock">
+			<h1 class="heading-title">enter email</h1>
+			<form [formGroup]="emailForm" (submit)="goLogin()">
+				<div class="formsec">
+					<label>email</label>
+					<input #eml type="email" maxlength="30" name="email" required placeholder="enter email address" formControlName="email"
+					/>
+					<input type="submit" name="login" class="submit-btn" value="continue" />
+					<span class="error-msg" *ngIf="emailForm.controls['email'].hasError('required') && isSubmited">Email is required </span>
+					<span class="error-msg" *ngIf="emailForm.controls['email'].hasError('email') && eml.value && isSubmited">Email not valid </span>
+				</div>
+			</form>
+		</div>
+	</div>
+
+	<div class="formsection" *ngIf="createPasswordShowContent">
+		<div class="centerblock">
+			<h1 class="heading-title">create password</h1>
+			<form [formGroup]="createPasswordForm" (submit)="goCreatePassword()">
+				<div class="formsec">
+					<label>password</label>
+					<input type="password" name="password" required placeholder="enter password" formControlName="password" />
+					<input type="submit" name="createpassword" class="submit-btn" value="continue" />
+				</div>
+				<p>By clicking above, you agree to our
+					<a href="javascript:void(0)">Terms of Use</a>
+				</p>
+				<p>and consent to our
+					<a href="javascript:void(0)">Privacy Policy</a>
+				</p>
+				<span class="error-msg" *ngIf="createPasswordForm.controls['password'].hasError('required') && isSubmitedPass">password is required</span>
+			</form>
+		</div>
+	</div>
+
+	<div class="formsection" *ngIf="loginShowContent">
+		<div class="centerblock">
+			<h1 class="heading-title">log in</h1>
+			<form [formGroup]="loginForm" (submit)="login()">
+				<div class="formsec">
+					<label>password</label>
+					<input type="password" name="password" required placeholder="Enter password" formControlName="password" />
+					<input type="submit" name="login" class="submit-btn" value="continue" />
+				</div>
+				<div class="routelink" (click)="forgotOn()">forgot password</div>
+				<span class="error-msg" *ngIf="loginForm.controls['password'].hasError('required') && isSubmitedLog">password is required</span>
+			</form>
+		</div>
+	</div>
+
+	<div class="formsection" *ngIf="forgotShowContent">
+		<div class="centerblock">
+			<h1 class="heading-title">Forgot Password</h1>
+			<h2 class="subtitle">Enter your email address and we'll <span class="linebrk">send it to you.</span> </h2>
+			<form [formGroup]="forgotForm" (submit)="forgot()">
+				<div class="formsec">
+					<label>email</label>
+					<input #fgm type="email" name="email" required placeholder="enter email address" formControlName="forgotemail" />
+					<input type="submit" name="login" class="submit-btn" value="continue" />
+				</div>
+				<div class="routelink" (click)="emailOn()">back to login</div>
+				<span class="error-msg" *ngIf="forgotForm.controls['forgotemail'].hasError('required') && isSubmitedForgot">email is required </span>
+				<span class="error-msg" *ngIf="forgotForm.controls['forgotemail'].hasError('email') && fgm.value && isSubmitedForgot">email not valid </span>
+			</form>
+		</div>
+	</div>
+
+	<div class="formsection" *ngIf="successScreen">
+		<div class="centerblock">
+			<img src="../../../assets/images/message-icon.png" alt="" title="" class="img-fluid" />
+			<h1 class="heading-title">got it!</h1>
+			<h2 class="subtitle">your password is in your inbox.</h2>
+		</div>
+	</div>
+
+</section>
+
+<app-new-footer></app-new-footer>
